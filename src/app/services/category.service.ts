@@ -15,6 +15,6 @@ export class CategoryService {
 
   async loadCategories() {
     const categories = await lastValueFrom(this.categoryApiService.getCategories());
-    this.categoriesSubject.next(categories.content);
+    this.categoriesSubject.next(categories.pageData);
   }
 }

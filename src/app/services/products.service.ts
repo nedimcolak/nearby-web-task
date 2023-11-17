@@ -19,7 +19,7 @@ export class ProductsService {
 
   async loadProducts(queryParams: ProductQuery) {
     const products = await lastValueFrom(this.productsApiService.getProducts(queryParams));
-    this.productsSubject.next(products.content);
+    this.productsSubject.next(products.pageData);
   }
 
   async loadProduct(id: string) {

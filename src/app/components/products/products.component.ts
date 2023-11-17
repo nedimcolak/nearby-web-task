@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
     this.categoryService.getCategories()
         .subscribe(
           (response) => {
-            this.categories = response.content;
+            this.categories = response.pageData;
           }
         )
   }
