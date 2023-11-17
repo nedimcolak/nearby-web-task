@@ -1,0 +1,41 @@
+<div class="filters_container">
+    <h2>Sort by</h2>
+    <div class="sort_container">
+        <mat-form-field>
+            <mat-label>Sort field</mat-label>
+            <mat-select [(ngModel)]="productQuery.sortBy">
+                <mat-option *ngFor="let field of sortFields" [value]="field.toLowerCase()">{{field}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Order</mat-label>
+            <mat-select [(ngModel)]="productQuery.order">
+                <mat-option value="ASC">ASC</mat-option>
+                <mat-option value="DESC">DESC</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <h2>Filter products</h2>
+    <h3>Categories:</h3>
+    <mat-form-field>
+        <mat-label>Select categories</mat-label>
+        <mat-select [formControl]="selectCategories" multiple>
+            <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h3>Price range:</h3>
+    <div class="price_filter">
+        <mat-form-field>
+            <mat-label>Min price</mat-label>
+            <input matInput type="number" [min]="0" [(ngModel)]="productQuery.minPrice" placeholder="0.0">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Max price</mat-label>
+            <input matInput type="number" [min]="productQuery.minPrice || 0" [(ngModel)]="productQuery.maxPrice" placeholder="0.0">
+        </mat-form-field>
+    </div>
+    <button mat-flat-button class="btn search_btn" (click)="onSearch()">
+        Search
+        <mat-icon>search</mat-icon>
+    </button>
+</div>

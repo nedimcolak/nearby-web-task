@@ -1,0 +1,46 @@
+.container {
+    width: 70%;
+    height: 500px;
+    padding: 3rem 1.5rem;
+    margin: 3rem auto;
+    background-color: white;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.product {
+    width: 100%;
+    display: flex;
+    flex: 5;
+    .info {
+        flex: 3;
+        padding: 1rem 2rem;
+        .form_field {
+            width: 100%;
+        }
+        .field_group {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .form_actions {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 1rem;
+            align-items: center;
+        }
+    }
+    .image {
+        flex: 2;
+        padding: 0 1rem;
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+}
+
+.btn_delete {
+    background-color: red !important;
+}

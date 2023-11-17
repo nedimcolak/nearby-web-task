@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Manage categories</h1>
+    <div class="categories">
+        <div class="add_category">
+            <mat-form-field appearance="outline" class="category_name">
+                <mat-label>Category name</mat-label>
+                <input matInput [(ngModel)]="newCategory.name" placeholder="Category name">
+            </mat-form-field>
+            <button mat-flat-button class="btn add_btn" (click)="onCreateCategory()">Add category</button>
+        </div>
+        <div class="categories_list">
+            <div class="category" *ngFor="let category of categories | async; let i = index">
+                <mat-form-field appearance="outline" class="category_name">
+                    <input matInput [(ngModel)]="category.name" [placeholder]="category.name">
+                </mat-form-field>
+                <button (click)="onUpdateCategory(category.id, category)" mat-icon-button class="btn">
+                    <mat-icon>save</mat-icon>
+                </button>
+                <button (click)="onDeleteCategory(category.id)" mat-icon-button class="btn"><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

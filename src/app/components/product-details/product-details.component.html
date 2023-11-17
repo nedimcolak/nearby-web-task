@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="details">
+        <div class="image_container">
+            <img src="https://d4n0y8dshd77z.cloudfront.net/listings/56576216/sm/img-1699901190-40f7d077ec99.jpg">
+            <mat-chip class="view_count"><mat-icon matChipAvatar>visibility</mat-icon> {{(product | async)?.views}}</mat-chip>
+        </div>
+        <div class="header">
+            <h2>{{(product | async)?.name}}</h2>
+            <span>{{(product | async)?.price}} $</span>
+        </div>
+        <h4 class="category">{{(product | async)?.categoryName}}</h4>
+        <hr>
+        <h4 class="description_title">Description:</h4>
+        <p>{{(product | async)?.description}}</p>
+    </div>
+    <app-product-card></app-product-card>
+</div>
