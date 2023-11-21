@@ -13,10 +13,10 @@ import { ProductQuery } from 'src/app/models/product-query.model';
 export class FiltersComponent implements OnInit {
   constructor(private productsService: ProductsService) {}
   
-  productQuery: ProductQuery = {} as ProductQuery;
+  @Input() productQuery: ProductQuery = {} as ProductQuery;
   
   @Input() categories: Category[] = [];
-  selectCategories: FormControl = new FormControl('');
+  selectCategories: string[] = [];
   sortFields: string[] = ['Price', 'Views']
   form!: FormGroup;
   
@@ -26,6 +26,7 @@ export class FiltersComponent implements OnInit {
   }
 
   onSearch(): void {
-    this.productsService.loadProducts(this.productQuery);
+    this.productQuery.page = 0;
+    this.productsService.loadProducts(this.productQuery, this.selectCategories);
   }
 }

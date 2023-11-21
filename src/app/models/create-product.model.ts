@@ -1,6 +1,6 @@
 export interface CreateProduct {
     name: string;
-    description: string;
+    description?: string;
     categoryId?: string;
     price: number;
     latitude: number;

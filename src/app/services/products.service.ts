@@ -12,14 +12,14 @@ export class ProductsService {
 
   constructor(private readonly productsApiService: ProductsApiService) { }
 
-  private readonly productsSubject: Subject<Product[]> = new BehaviorSubject<Product[]>([]);
+  private readonly productsPageSubject: Subject<PageableResponse<Product>> = new BehaviorSubject<PageableResponse<Product>>({} as PageableResponse<Product>);
   private readonly productDetailsSubject: Subject<Product> = new BehaviorSubject<Product>({} as Product);
-  public products$ = this.productsSubject.asObservable();
+  public products$ = this.productsPageSubject.asObservable();
   public productDetails$ = this.productDetailsSubject.asObservable();
 
-  async loadProducts(queryParams: ProductQuery) {
-    const products = await lastValueFrom(this.productsApiService.getProducts(queryParams));
-    this.productsSubject.next(products.pageData);
+  async loadProducts(queryParams: ProductQuery, categories?: string[]) {
+    const products = await lastValueFrom(this.productsApiService.getProducts(queryParams, categories));
+    this.productsPageSubject.next(products);
   }
 
   async loadProduct(id: string) {

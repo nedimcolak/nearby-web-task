@@ -20,7 +20,9 @@ export class ManageCategoriesComponent {
   editCategoryName: string | null = null;
 
   onUpdateCategory(id: string, category: Category) {
-    this.categoryApiService.updateCategory(id, category).subscribe();
+    this.categoryApiService.updateCategory(id, category).subscribe(response => {
+      this.categoryService.loadCategories();
+    });
   }
 
   onCreateCategory() {

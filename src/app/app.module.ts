@@ -17,6 +17,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
@@ -47,7 +48,8 @@ import { ManageCategoriesComponent } from './components/manage-categories/manage
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

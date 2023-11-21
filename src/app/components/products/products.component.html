@@ -1,6 +1,25 @@
 <div class="products">
-    <app-filters class="filters" [categories]="categories"></app-filters>
-    <div class="list_container">
-        <app-product-card *ngFor="let product of products | async" [product]="product"></app-product-card>
-    </div>
+  <app-filters
+    class="filters"
+    [categories]="categories"
+    [productQuery]="pageQuery"
+  ></app-filters>
+  <div class="list_container">
+    <app-product-card
+      *ngFor="let product of (productsPage | async)?.pageData"
+      [product]="product"
+    ></app-product-card>
+    <mat-paginator
+      #paginator
+      class="paginator"
+      (page)="onPageUpdate($event)"
+      [length]="(productsPage | async)?.totalElements"
+      [pageSize]="pageQuery.pageSize"
+      [pageIndex]="pageQuery.page"
+      hidePageSize="true"
+      showFirstLastButtons="false"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
 </div>

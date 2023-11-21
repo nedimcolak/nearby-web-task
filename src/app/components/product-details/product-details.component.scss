@@ -64,3 +64,10 @@ app-product-card {
         align-items: center;
     }
 }
+
+.edit_product {
+    margin: 0.5rem 0;
+}
+.edit_product:hover {
+    cursor: pointer;
+}

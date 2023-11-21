@@ -1,53 +1,98 @@
 <div class="container">
-    <h1>{{modeText}} Product</h1>
-    <div class="product">
-        <div class="info">
-            <mat-form-field class="form_field">
-                <mat-label>Product name</mat-label>
-                <input matInput [(ngModel)]="product.name" placeholder="What are you selling?">
-            </mat-form-field>
-            <div class="field_group">
-                <mat-form-field class="form_field">
-                    <mat-label>Category</mat-label>
-                    <mat-select [(ngModel)]="product.categoryId">
-                        <mat-option *ngFor="let category of categories | async" [value]="category.id">{{category.name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="form_field">
-                    <mat-label>Price</mat-label>
-                    <input matInput type="number" [min]="0" [(ngModel)]="product.price" placeholder="Price">
-                </mat-form-field>
-            </div>
-            <h3 [align]="'left'">Location</h3>
-            <div class="field_group">
-                <mat-form-field class="form_field">
-                    <mat-label>Latitude</mat-label>
-                    <input matInput type="number" [min]="0" [(ngModel)]="product.latitude" placeholder="Price">
-                </mat-form-field>
-                <mat-form-field class="form_field">
-                    <mat-label>Longitude</mat-label>
-                    <input matInput type="number" [min]="0" [(ngModel)]="product.longitude" placeholder="Price">
-                </mat-form-field>
-            </div>
-            <mat-form-field class="form_field">
-                <mat-label>Description</mat-label>
-                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="6" cdkAutosizeMaxRows="8" maxlength="500" class="form_field" [(ngModel)]="product.description"></textarea>
-            </mat-form-field>
-            <div class="form_actions">
-                <button mat-flat-button class="btn" (click)="createProduct()">
-                    {{modeText | uppercase}}
-                    <mat-icon>save</mat-icon>
-                </button>
-                <button mat-flat-button class="btn btn_delete" *ngIf="isEdit">
-                    {{'Delete' | uppercase}}
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </div>
-        </div>
-        <hr>
-        <div class="image">
-            <img [src]="(uploadedImageURL | async) || 'https://fakeimg.pl/600x400?text=Product+image&font=bebas'">
-            <app-image-upload></app-image-upload>
-        </div>
+  <h1>{{ getModeText() }} Product</h1>
+  <div class="product">
+    <div class="info">
+      <mat-form-field class="form_field">
+        <mat-label>Product name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="product.name"
+          placeholder="What are you selling?"
+        />
+      </mat-form-field>
+      <div class="field_group">
+        <mat-form-field class="form_field">
+          <mat-label>Category</mat-label>
+          <mat-select [(ngModel)]="product.categoryId">
+            <mat-option
+              *ngFor="let category of categories | async"
+              [value]="category.id"
+              >{{ category.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form_field">
+          <mat-label>Price</mat-label>
+          <input
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="product.price"
+            placeholder="Price"
+          />
+        </mat-form-field>
+      </div>
+      <h3 [align]="'left'">Location</h3>
+      <div class="field_group">
+        <mat-form-field class="form_field">
+          <mat-label>Latitude</mat-label>
+          <input
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="product.latitude"
+            placeholder="Price"
+          />
+        </mat-form-field>
+        <mat-form-field class="form_field">
+          <mat-label>Longitude</mat-label>
+          <input
+            matInput
+            type="number"
+            [min]="0"
+            [(ngModel)]="product.longitude"
+            placeholder="Price"
+          />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="form_field">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="6"
+          cdkAutosizeMaxRows="8"
+          maxlength="500"
+          class="form_field"
+          [(ngModel)]="product.description"
+        ></textarea>
+      </mat-form-field>
+      <div class="form_actions">
+        <button mat-flat-button class="btn" (click)="createOrUpdateProduct()">
+          {{ getModeText() | uppercase }}
+          <mat-icon>save</mat-icon>
+        </button>
+        <button
+          mat-flat-button
+          class="btn btn_delete"
+          (click)="deleteProduct()"
+          *ngIf="isEdit"
+        >
+          {{ "Delete" | uppercase }}
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
+    <hr />
+    <div class="image">
+      <img
+        [src]="
+          product.image ||
+          'https://fakeimg.pl/600x400?text=Product+image&font=bebas'
+        "
+      />
+      <app-image-upload></app-image-upload>
+    </div>
+  </div>
 </div>

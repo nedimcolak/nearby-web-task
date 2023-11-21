@@ -61,7 +61,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "near-by-web:build:production"
+              "browserTarget": "near-by-web:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "near-by-web:build:development",
